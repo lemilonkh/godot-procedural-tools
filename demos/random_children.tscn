@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://objects/child_selector.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.0745098, 0.848162, 1, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.945098, 1, 0, 1 )
+roughness = 0.0
+
+[sub_resource type="CubeMesh" id=4]
+material = SubResource( 3 )
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 1, 0, 0, 1 )
+metallic = 0.7
+roughness = 0.31
+
+[sub_resource type="CubeMesh" id=6]
+material = SubResource( 5 )
+size = Vector3( 1, 1, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="ChildSelector" type="Spatial" parent="."]
+script = ExtResource( 1 )
+child_probabilities = [ 0.3, 0.3, 0.4 ]
+child_selection = 0.965368
+
+[node name="Mesh1" type="MeshInstance" parent="ChildSelector"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Mesh2" type="MeshInstance" parent="ChildSelector"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Mesh3" type="MeshInstance" parent="ChildSelector"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+visible = false
+mesh = SubResource( 6 )
+material/0 = null
